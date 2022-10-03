@@ -1,4 +1,5 @@
 import time
+import sys
 import psycopg2
 import requests
 from bs4 import BeautifulSoup
@@ -54,10 +55,14 @@ def get_odds(id, game):
     return(odd_team1,odd_team2)
 
 def main():
+    db_password = 'postgrespw'
+    if len(sys.argv) != 1:
+        db_password = sys.argv[1]      
+
     # print(get_odds("2357822","ec-kyiv-vs-yodagus-elisa-invitational-fall-2022-contenders"))
     #Establishing the connection
     conn = psycopg2.connect(
-    database="cs_go_bets", user='postgres', password='postgrespw', host='127.0.0.1', port= '49153'
+    database="cs_go_bets", user='postgres', password=db_password, host='127.0.0.1', port= '5432'
     )
     #Setting auto commit false
     conn.autocommit = True
