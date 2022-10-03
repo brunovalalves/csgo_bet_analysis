@@ -58,16 +58,16 @@ def main():
     db_password = 'postgrespw'
     if len(sys.argv) != 1:
         db_password = sys.argv[1]      
-
-    # print(get_odds("2357822","ec-kyiv-vs-yodagus-elisa-invitational-fall-2022-contenders"))
+   
     #Establishing the connection
     conn = psycopg2.connect(
-    database="cs_go_bets", user='postgres', password=db_password, host='127.0.0.1', port= '5432'
+    database="cs_go_bets", user='postgres', password=db_password, host='127.0.0.1', port= '49153'
     )
-    #Setting auto commit false
+    # Setting auto commit false
     conn.autocommit = True
     matches_request = requests.get ("https://www.hltv.org/matches")    
     matches_request_bs = BeautifulSoup(matches_request.content, "html.parser") 
+    print ('Iniciando análise das partidas')
     for a in matches_request_bs.find_all('a',{'class':'match'}):
         id = a['href'].split('/')[2]        
         print('Analisando o jogo '+str(id))
