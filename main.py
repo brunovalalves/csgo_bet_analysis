@@ -61,7 +61,7 @@ def main():
    
     #Establishing the connection
     conn = psycopg2.connect(
-    database="cs_go_bets", user='postgres', password=db_password, host='127.0.0.1', port= '49153'
+    database="cs_go_bets", user='postgres', password=db_password, host='127.0.0.1', port= '5432'
     )
     # Setting auto commit false
     conn.autocommit = True
